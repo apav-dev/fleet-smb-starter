@@ -21,6 +21,7 @@ import Schema from "../components/Schema";
 import ContactSection from "../components/ContactSection";
 import SocialPostsGallery from "../components/SocialPostsGallery";
 import Reviews from "../components/Reviews";
+import { ChatPopUp } from "@yext/chat-ui-react";
 
 export const config: TemplateConfig = {
   stream: {
@@ -129,6 +130,21 @@ const Location: Template<TemplateRenderProps> = ({
         <ContactSection address={address} phone={mainPhone} email={emails} />
         <Reviews entityId={id} />
         <SocialPostsGallery entityId={id} entityName={name} />
+        <ChatPopUp
+          customCssClasses={{
+            headerCssClasses: {
+              container: "bg-gradient-to-tr from-gray-900 to-gray-600",
+            },
+            button: "bg-gradient-to-br from-gray-900 to-gray-600",
+            buttonIcon: "text-gray-600",
+            panelCssClasses: {
+              inputCssClasses: {
+                textArea: "focus:border-gray-900 focus:ring-gray-900",
+              },
+            },
+          }}
+          title={name}
+        />
       </PageLayout>
     </>
   );

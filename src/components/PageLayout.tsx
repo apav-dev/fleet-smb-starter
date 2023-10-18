@@ -1,8 +1,17 @@
 import * as React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { AnalyticsProvider, AnalyticsScopeProvider } from "@yext/sites-components";
+import {
+  AnalyticsProvider,
+  AnalyticsScopeProvider,
+} from "@yext/sites-components";
+import {
+  ChatHeadlessProvider,
+  HeadlessConfig,
+} from "@yext/chat-headless-react";
 import { TemplateProps } from "@yext/pages";
+import { ChatPanel, ChatPopUp } from "@yext/chat-ui-react";
+import "@yext/chat-ui-react/bundle.css";
 
 export interface PageLayoutProps {
   children?: React.ReactNode;
@@ -10,32 +19,39 @@ export interface PageLayoutProps {
   templateData: TemplateProps;
 }
 
-const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
+const config: HeadlessConfig = {
+  apiKey: "3f31ee3986049b492368d72f4e9110a0",
+  botId: "trieste-pizza",
+};
 
+const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
   let backgroundColor;
 
   if (data.c_backgroundColor) {
-    const transformedColor = data.c_backgroundColor.replace(/\s+/g, '').toLowerCase();
+    const transformedColor = data.c_backgroundColor
+      .replace(/\s+/g, "")
+      .toLowerCase();
     backgroundColor = `--backgroundColor: ${transformedColor}`;
   } else {
     backgroundColor = `--backgroundColor: white`;
   }
 
-
   return (
     <>
       <style>:root {`{${backgroundColor}}`}</style>
-      <AnalyticsProvider templateData={templateData}>
-        <div className="min-h-screen" >
-          <AnalyticsScopeProvider name="header">
-            <Header data={data}/>
-          </AnalyticsScopeProvider>
-          {children}
-          <AnalyticsScopeProvider name="footer">
-            <Footer />
-          </AnalyticsScopeProvider>
-        </div>
-      </AnalyticsProvider>
+      <ChatHeadlessProvider config={config}>
+        <AnalyticsProvider templateData={templateData}>
+          <div className="min-h-screen">
+            <AnalyticsScopeProvider name="header">
+              <Header data={data} />
+            </AnalyticsScopeProvider>
+            {children}
+            <AnalyticsScopeProvider name="footer">
+              <Footer />
+            </AnalyticsScopeProvider>
+          </div>
+        </AnalyticsProvider>
+      </ChatHeadlessProvider>
     </>
   );
 };
