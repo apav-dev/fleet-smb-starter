@@ -132,7 +132,7 @@ const Reviews = ({ entityId }: ReviewsProps) => {
             {isLoading ? (
               <ReviewsSkeleton />
             ) : (
-              data?.response.docs?.map((review) => (
+              data?.response?.docs?.map((review) => (
                 <div
                   key={review.$key.primaryKey}
                   className="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8"
