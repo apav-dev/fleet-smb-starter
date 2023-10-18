@@ -26,7 +26,7 @@ export const config: TemplateConfig = {
   stream: {
     $id: "Location",
     filter: {
-      entityIds: ["3612996687540401979"],
+      entityIds: [YEXT_PUBLIC_ENTITY_ID],
     },
     fields: [
       "id",

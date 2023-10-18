@@ -23,7 +23,7 @@ type ReviewSubmission = {
 
 const submitReview = async (review: ReviewSubmission) => {
   const response = await fetch(
-    `https://liveapi.yext.com/v2/accounts/me/reviewSubmission?api_key=${YEXT_PUBLIC_REVIEW_SUBMISSION_API_KEY}&v=20221113`,
+    `https://liveapi.yext.com/v2/accounts/me/reviewSubmission?api_key=${YEXT_PUBLIC_YEXT_API_KEY}&v=20231013`,
     {
       method: "POST",
       headers: {
@@ -218,9 +218,9 @@ const ReviewSubmissionForm = ({
                         <button
                           type="submit"
                           className={twMerge(
-                            "rounded-md bg-sky-400 px-3.5 py-2.5 w-40 text-center text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700",
+                            "rounded-md bg-indigo-500 px-3.5 py-2.5 w-40 text-center text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500",
                             formReady
-                              ? "cursor-pointer hover:bg-sky-700"
+                              ? "cursor-pointer hover:bg-indigo-500"
                               : "cursor-not-allowed opacity-50"
                           )}
                           disabled={!formReady}
