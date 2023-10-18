@@ -20,7 +20,7 @@ export interface PageLayoutProps {
 }
 
 const config: HeadlessConfig = {
-  apiKey: "3f31ee3986049b492368d72f4e9110a0",
+  apiKey: YEXT_PUBLIC_YEXT_API_KEY,
   botId: "trieste-pizza",
 };
 
