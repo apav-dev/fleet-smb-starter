@@ -47,7 +47,6 @@ export const config: TemplateConfig = {
       // "c_backgroundColor",
     ],
     localization: { primary: true },
-
     transform: {
       replaceOptionValuesWithDisplayNames: [
         "paymentOptions",
