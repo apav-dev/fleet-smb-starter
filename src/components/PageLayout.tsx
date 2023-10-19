@@ -21,7 +21,7 @@ export interface PageLayoutProps {
 
 const config: HeadlessConfig = {
   apiKey: YEXT_PUBLIC_YEXT_API_KEY,
-  botId: "trieste-pizza",
+  botId: "chat-bot",
 };
 
 const PageLayout = ({ children, data, templateData }: PageLayoutProps) => {
