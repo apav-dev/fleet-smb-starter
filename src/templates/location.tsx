@@ -70,30 +70,30 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
-      {
-        type: "meta",
-        attributes: {
-          name: "description",
-          content: document.description,
-        },
-      },
-      {
-        type: "meta", // Meta Tag (og:image)
-        attributes: {
-          property: "og:image",
-          content: document.photoGallery
-            ? document.photoGallery[0].image.url
-            : null,
-        },
-      },
-      {
-        type: "link",
-        attributes: {
-          rel: "icon",
-          type: "image/x-icon",
-          href: relativePrefixToRoot + Favicon,
-        },
-      },
+      // {
+      //   type: "meta",
+      //   attributes: {
+      //     name: "description",
+      //     content: document.description,
+      //   },
+      // },
+      // {
+      //   type: "meta", // Meta Tag (og:image)
+      //   attributes: {
+      //     property: "og:image",
+      //     content: document.photoGallery
+      //       ? document.photoGallery[0].image.url
+      //       : null,
+      //   },
+      // },
+      // {
+      //   type: "link",
+      //   attributes: {
+      //     rel: "icon",
+      //     type: "image/x-icon",
+      //     href: relativePrefixToRoot + Favicon,
+      //   },
+      // },
     ],
   };
 };
@@ -113,16 +113,26 @@ const Location: Template<TemplateRenderProps> = ({
     description,
     emails,
     logo,
+    businessLogo,
     photoGallery,
     // c_backgroundColor,
   } = document;
+
+  console.log(document);
 
   const data = { mainPhone, emails, logo };
 
   return (
     <>
       <Schema data={document} />
-      <PageLayout data={data} templateData={{ __meta, document }}>
+      <PageLayout
+        headerProps={{
+          mainPhone,
+          emails,
+          logo,
+        }}
+        templateData={{ __meta, document }}
+      >
         <Banner name={name} photoGallery={photoGallery} />
         <About description={description} />
         {hours && <Hours title={"Hours"} hours={hours} />}
